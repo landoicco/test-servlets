@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet{
 		
 		if(hasAccess(colaborador, password))
 		{
-			out.println("welcome");
+			out.println("Welcome");
 		}
 		else{
 			out.println("bye");

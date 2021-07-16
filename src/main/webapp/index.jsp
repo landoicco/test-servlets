@@ -1,9 +1,18 @@
 <html>
-<body>
-<!--<h2>Lando was here!</h2>
-<br>
-<br>
-<a href="/LandoTest/LandoTest/LoginServlet">Ir a servlet</a>-->
+<body>  
+ <% 
+   String message;
+   String wrongData = request.getParameter("wrongData");
+   if(wrongData == null)
+   {
+	   message = "A";
+   }
+   else
+   {
+	   message = "*Datos no validos*";
+   }
+   
+ %>
 
 <h1>Acceso a Colaboradores</h1>
 	  <fieldset>
@@ -12,7 +21,9 @@
 		  Colaborador <input type="text" name="colaborador">
 		  <br><br>
 		  Password: <input type="password" name="password">
-          <br><br>		  
+          <br>
+          <p style="color:red"><%= message %></p>
+          <br> 		  
 		  <input type="submit" value="Enviar"/>
 		 </form>
       </fieldset>
