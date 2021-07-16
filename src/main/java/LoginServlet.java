@@ -20,9 +20,13 @@ public class LoginServlet extends HttpServlet{
 		
 		if(hasAccess(colaborador, password))
 		{
+			request.setAttribute("wrongData", "false");
 			out.println("Welcome");
 		}
 		else{
+			request.setAttribute("wrongData", "true");
+			RequestDispatcher rq = request.getRequestDispatcher("IndexJSP");
+			rq.forward(request, response);
 			out.println("bye");
 		}
 		

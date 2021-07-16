@@ -2,10 +2,10 @@
 <body>  
  <% 
    String message;
-   String wrongData = request.getParameter("wrongData");
-   if(wrongData == null)
+   String wrongData = (String)request.getAttribute("wrongData");
+   if(wrongData == null || wrongData == "false")
    {
-	   message = "A";
+	   message = "";
    }
    else
    {
