@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet{
 		}
 
 		request.setAttribute("wrongData", "true");
-		RequestDispatcher rq = request.getRequestDispatcher("IndexJSP");
+		RequestDispatcher rq = request.getRequestDispatcher("/index.html");
 		rq.forward(request, response);
     }
 	

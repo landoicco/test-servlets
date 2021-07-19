@@ -17,7 +17,7 @@
 <h1>Acceso a Colaboradores</h1>
 	  <fieldset>
 	    <legend>Formulario de acceso</legend>
-		<form name="acceso" action="/LandoTest/LandoTest/LoginServlet" method="POST">
+		<form name="acceso" action="/LandoTest/LandoTest/login.html" method="POST">
 		  Colaborador <input type="text" name="colaborador">
 		  <br><br>
 		  Password: <input type="password" name="password">

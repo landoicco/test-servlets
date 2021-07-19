@@ -12,17 +12,17 @@
 </servlet>
 <servlet-mapping>
   <servlet-name>LoginServlet</servlet-name>
-  <url-pattern>/LandoTest/LoginServlet</url-pattern>
+  <url-pattern>/LandoTest/login.html</url-pattern>
 </servlet-mapping> 
 
 <!-- mapping IndexJSP -->
 <servlet>
     <servlet-name>IndexJSP</servlet-name>
-    <jsp-file>/index.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
 </servlet>
 <servlet-mapping>
     <servlet-name>IndexJSP</servlet-name>
-    <url-pattern>/LandoTest/*</url-pattern>   
+    <url-pattern>/index.html</url-pattern>
 </servlet-mapping>
 
 <!-- mapping WelcomeJSP -->
