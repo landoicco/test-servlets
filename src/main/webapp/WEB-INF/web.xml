@@ -24,6 +24,17 @@
     <servlet-name>IndexJSP</servlet-name>
     <url-pattern>/LandoTest/*</url-pattern>   
 </servlet-mapping>
+
+<!-- mapping WelcomeJSP -->
+<servlet>
+    <servlet-name>WelcomeJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/welcome.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+    <servlet-name>WelcomeJSP</servlet-name>
+    <!--url-pattern>/LandoTest/jsp/*</url-pattern-->   
+	<url-pattern>/jsp/welcome.html</url-pattern>
+</servlet-mapping> 
   
 </web-app>
 

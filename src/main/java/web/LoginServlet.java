@@ -12,24 +12,26 @@ public class LoginServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        // Recuperar paametros de la peticipon
+        // Recuperar parametros de la peticion
 		String colaborador = request.getParameter("colaborador");
 		String password = request.getParameter("password");
 		
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		
 		if(hasAccess(colaborador, password))
 		{
+			// Ver que URL tiene el request
+			System.out.println("URL REQUEST: " + request.getRequestURL());
+
 			request.setAttribute("wrongData", "false");
-			out.println("Welcome");
-		}
-		else{
-			request.setAttribute("wrongData", "true");
-			RequestDispatcher rq = request.getRequestDispatcher("IndexJSP");
+			RequestDispatcher rq = request.getRequestDispatcher("/jsp/welcome.html");
 			rq.forward(request, response);
-			out.println("bye");
+			return;
 		}
-		
+
+		request.setAttribute("wrongData", "true");
+		RequestDispatcher rq = request.getRequestDispatcher("IndexJSP");
+		rq.forward(request, response);
     }
 	
 	private boolean hasAccess(String colaborador, String password)
