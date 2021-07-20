@@ -1,8 +1,7 @@
 <html>
 <body>
 <%
-String message = "";
-// Get hasAccess from string and convert to Boolean object
+// Get hasAccess from string and convert to boolean
 boolean hasAccess = Boolean.parseBoolean((String)request.getAttribute("hasAccess"));
 if(!hasAccess)
 {
@@ -11,6 +10,5 @@ if(!hasAccess)
 }
 %>
 <h3>Bienvenido</h3>
-<%= message %>
 </body>
 </html>
