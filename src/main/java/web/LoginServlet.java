@@ -16,19 +16,13 @@ public class LoginServlet extends HttpServlet{
 		String colaborador = request.getParameter("colaborador");
 		String password = request.getParameter("password");
 		
-		//PrintWriter out = response.getWriter();
-		
 		if(hasAccess(colaborador, password))
 		{
-			// Ver que URL tiene el request
-			System.out.println("URL REQUEST: " + request.getRequestURL());
-
-			request.setAttribute("wrongData", "false");
+			request.setAttribute("hasAccess", "true");
 			RequestDispatcher rq = request.getRequestDispatcher("/jsp/welcome.html");
 			rq.forward(request, response);
-			return;
+			//return;
 		}
-
 		request.setAttribute("wrongData", "true");
 		RequestDispatcher rq = request.getRequestDispatcher("/index.html");
 		rq.forward(request, response);

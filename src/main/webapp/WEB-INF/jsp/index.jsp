@@ -1,17 +1,13 @@
 <html>
 <body>  
  <% 
-   String message;
-   String wrongData = (String)request.getAttribute("wrongData");
-   if(wrongData == null || wrongData == "false")
+   String message = "";
+   // Get wrongData from string and convert to Boolean object
+   boolean wrongData = Boolean.parseBoolean((String)request.getAttribute("wrongData"));
+   if(wrongData)
    {
-	   message = "";
+      message = "*Datos no validos*";
    }
-   else
-   {
-	   message = "*Datos no validos*";
-   }
-   
  %>
 
 <h1>Acceso a Colaboradores</h1>
