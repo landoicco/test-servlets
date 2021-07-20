@@ -6,7 +6,8 @@ String message = "";
 boolean hasAccess = Boolean.parseBoolean((String)request.getAttribute("hasAccess"));
 if(!hasAccess)
 {
-  message = "You shall not pass";
+  // Incluir context path para que encuentre el jsp
+  response.sendRedirect(request.getContextPath() + "/index.html");
 }
 %>
 <h3>Bienvenido</h3>
