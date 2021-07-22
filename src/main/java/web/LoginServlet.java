@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
 
         if (hasAccess(colaborador, password)) {
             request.setAttribute("hasAccess", "true");
-            RequestDispatcher rq = request.getRequestDispatcher("/jsp/welcome.html");
+            RequestDispatcher rq = request.getRequestDispatcher("/welcome.html");
             rq.forward(request, response);
             //return;
         }

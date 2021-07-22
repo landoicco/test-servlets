@@ -12,7 +12,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LandoTest/login.html</url-pattern>
+        <url-pattern>/web/login.html</url-pattern>
     </servlet-mapping>
 
     <!-- mapping IndexJSP -->
@@ -32,9 +32,27 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeJSP</servlet-name>
-        <!--url-pattern>/LandoTest/jsp/*</url-pattern-->
-        <url-pattern>/jsp/welcome.html</url-pattern>
+        <url-pattern>/welcome.html</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping header.html -->
+    <servlet>
+        <servlet-name>HeaderHTML</servlet-name>
+        <jsp-file>/WEB-INF/html/header.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HeaderHTML</servlet-name>
+        <url-pattern>/html/header.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping footer.html -->
+    <servlet>
+        <servlet-name>FooterHTML</servlet-name>
+        <jsp-file>/WEB-INF/html/footer.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FooterHTML</servlet-name>
+        <url-pattern>/html/footer.html</url-pattern>
+    </servlet-mapping>
 </web-app>
 
