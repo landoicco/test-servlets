@@ -1,12 +1,7 @@
 <html>
 <%
-// Get hasAccess from string and convert to boolean
-boolean hasAccess = Boolean.parseBoolean((String)session.getAttribute("hasAccess"));
+// Get Colab name
 String colabName = (String)session.getAttribute("name");
-if(!hasAccess){
-  // Incluir context path para que encuentre el jsp
-  response.sendRedirect(request.getContextPath() + "/index.html");
-  }
 %>
 <%@include file="/WEB-INF/html/header.html"%>
 <body>
