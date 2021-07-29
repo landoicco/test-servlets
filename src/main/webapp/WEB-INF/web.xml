@@ -32,7 +32,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginJSP</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/login.html</url-pattern>
     </servlet-mapping>
 
     <!-- mapping WelcomeJSP -->
@@ -42,7 +42,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeJSP</servlet-name>
-        <url-pattern>/welcome.html</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- mapping header.html -->
@@ -82,7 +82,7 @@
     </filter>
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
-        <url-pattern>/welcome.html</url-pattern>
+        <url-pattern>/</url-pattern>
     </filter-mapping>
 </web-app>
 

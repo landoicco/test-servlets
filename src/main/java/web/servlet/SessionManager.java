@@ -18,4 +18,15 @@ public class SessionManager extends HttpServlet{
         session.setAttribute("hasAccess", hasAccess);
 
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpSession session = request.getSession();
+        session.invalidate();
+        httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
+
+    }
 }

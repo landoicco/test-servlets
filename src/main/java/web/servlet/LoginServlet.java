@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("colaborador", colaborador);
             RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
             rq.include(request, response);
-            response.sendRedirect(request.getContextPath() + "/welcome.html");
+            response.sendRedirect(request.getContextPath() + "/");
             return;
         }
         request.setAttribute("wrongData", "true");
