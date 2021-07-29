@@ -15,8 +15,7 @@ public class LoginServlet extends HttpServlet {
 
         if (hasAccess(colaborador, password)) {
             request.setAttribute("hasAccess", "true");
-            //RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
-            RequestDispatcher rq = request.getRequestDispatcher("/welcome.html");
+            RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
             rq.forward(request, response);
         }
         request.setAttribute("wrongData", "true");
