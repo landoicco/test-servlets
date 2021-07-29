@@ -1,10 +1,8 @@
 package web.servlet;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class SessionManager extends HttpServlet{
 
