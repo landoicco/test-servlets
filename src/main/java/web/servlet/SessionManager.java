@@ -19,10 +19,5 @@ public class SessionManager extends HttpServlet{
         session.setAttribute("name", name);
         session.setAttribute("hasAccess", hasAccess);
 
-//        PrintWriter out = response.getWriter();
-//        out.println("Soy el SessionManager");
-        RequestDispatcher rq = request.getRequestDispatcher("/welcome.html");
-        rq.forward(request,response);
-
     }
 }
