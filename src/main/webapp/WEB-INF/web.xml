@@ -8,11 +8,21 @@
     <!-- mapping LoginServlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>web.LoginServlet</servlet-class>
+        <servlet-class>web.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/web/login.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping SessionManager -->
+    <servlet>
+        <servlet-name>SessionManager</servlet-name>
+        <servlet-class>web.servlet.SessionManager</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionManager</servlet-name>
+        <url-pattern>/web/sessionmanager.html</url-pattern>
     </servlet-mapping>
 
     <!-- mapping IndexJSP -->
@@ -58,7 +68,7 @@
     <!-- Mapping for the LoginFilter -->
     <filter>
         <filter-name>LogFilter</filter-name>
-        <filter-class>web.LogFilter</filter-class>
+        <filter-class>web.filter.LogFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LogFilter</filter-name>

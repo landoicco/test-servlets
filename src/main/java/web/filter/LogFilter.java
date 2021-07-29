@@ -1,4 +1,4 @@
-package web;
+package web.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

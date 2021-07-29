@@ -1,12 +1,9 @@
-package web;
+package web.servlet;
 
-import java.io.*;
-
+import java.io.IOException;
 import jakarta.servlet.*;
-//import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-//@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -18,9 +15,9 @@ public class LoginServlet extends HttpServlet {
 
         if (hasAccess(colaborador, password)) {
             request.setAttribute("hasAccess", "true");
+            //RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
             RequestDispatcher rq = request.getRequestDispatcher("/welcome.html");
             rq.forward(request, response);
-            //return;
         }
         request.setAttribute("wrongData", "true");
         RequestDispatcher rq = request.getRequestDispatcher("/index.html");
@@ -28,6 +25,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     private boolean hasAccess(String colaborador, String password) {
+
         // Pasar parametros a mayusculas
         String newColab = colaborador.toUpperCase();
 

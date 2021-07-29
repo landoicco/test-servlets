@@ -1,6 +1,7 @@
 <html>
 <%
 // Get hasAccess from string and convert to boolean
+//boolean hasAccess = Boolean.parseBoolean((String)session.getAttribute("hasAccess"));
 boolean hasAccess = Boolean.parseBoolean((String)request.getAttribute("hasAccess"));
 if(!hasAccess){
   // Incluir context path para que encuentre el jsp
