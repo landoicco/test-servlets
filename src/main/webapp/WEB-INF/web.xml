@@ -27,12 +27,12 @@
 
     <!-- mapping IndexJSP -->
     <servlet>
-        <servlet-name>IndexJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/index.jsp</jsp-file>
+        <servlet-name>LoginJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>IndexJSP</servlet-name>
-        <url-pattern>/index.html</url-pattern>
+        <servlet-name>LoginJSP</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- mapping WelcomeJSP -->

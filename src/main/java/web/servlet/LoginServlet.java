@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         request.setAttribute("wrongData", "true");
-        RequestDispatcher rq = request.getRequestDispatcher("/index.html");
+        RequestDispatcher rq = request.getRequestDispatcher("/login.html");
         rq.forward(request, response);
     }
 
