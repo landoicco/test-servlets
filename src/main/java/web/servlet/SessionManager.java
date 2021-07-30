@@ -2,9 +2,10 @@ package web.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
+
 import java.io.IOException;
 
-public class SessionManager extends HttpServlet{
+public class SessionManager extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

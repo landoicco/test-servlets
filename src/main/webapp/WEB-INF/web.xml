@@ -5,6 +5,8 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <!--                      ===== SERVLETS ====               -->
+
     <!-- mapping LoginServlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -24,6 +26,8 @@
         <servlet-name>SessionManager</servlet-name>
         <url-pattern>/web/sessionmanager.html</url-pattern>
     </servlet-mapping>
+
+    <!--                      ===== JSP's ====               -->
 
     <!-- mapping IndexJSP -->
     <servlet>
@@ -45,6 +49,48 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping JokeOneJSP -->
+    <servlet>
+        <servlet-name>JokeOneJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/jokes/JokeOne.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokeOneJSP</servlet-name>
+        <url-pattern>/secret/jokeone.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping JokeTwoJSP -->
+    <servlet>
+        <servlet-name>JokeTwoJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/jokes/JokeTwo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokeTwoJSP</servlet-name>
+        <url-pattern>/secret/joketwo.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping JokeThreeJSP -->
+    <servlet>
+        <servlet-name>JokeThreeJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/jokes/JokeThree.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokeThreeJSP</servlet-name>
+        <url-pattern>/secret/jokethree.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping JokeFourJSP -->
+    <servlet>
+        <servlet-name>JokeFourJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/jokes/JokeFour.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokeFourJSP</servlet-name>
+        <url-pattern>/secret/jokefour.html</url-pattern>
+    </servlet-mapping>
+
+    <!--                      ===== HTML files ====               -->
+
     <!-- mapping header.html -->
     <servlet>
         <servlet-name>HeaderHTML</servlet-name>
@@ -64,6 +110,8 @@
         <servlet-name>FooterHTML</servlet-name>
         <url-pattern>/html/footer.html</url-pattern>
     </servlet-mapping>
+
+    <!--                      ===== FILTERS ====               -->
 
     <!-- Mapping for the LoginFilter -->
     <filter>

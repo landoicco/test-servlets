@@ -2,7 +2,9 @@ package web.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +24,7 @@ public class LogFilter implements Filter {
         //Cast Servlet objects to HttpServlet objects
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 
-        String message = "REQUEST SEND-->" +  httpRequest.getMethod()
+        String message = "REQUEST SEND-->" + httpRequest.getMethod()
                 + " TO-->" + httpRequest.getRequestURI();
 
         logger.info(message);
