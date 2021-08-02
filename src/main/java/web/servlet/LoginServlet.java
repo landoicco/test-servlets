@@ -19,11 +19,11 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("colaborador", colaborador);
             RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
             rq.include(request, response);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/home");
             return;
         }
         request.setAttribute("wrongData", "true");
-        RequestDispatcher rq = request.getRequestDispatcher("/login.html");
+        RequestDispatcher rq = request.getRequestDispatcher("/login");
         rq.forward(request, response);
     }
 

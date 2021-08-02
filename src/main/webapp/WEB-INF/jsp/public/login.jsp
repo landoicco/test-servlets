@@ -73,7 +73,7 @@
       <body class="text-center">
 
       <main class="form-signin">
-          <form action="/LandoTest/web/login.html" method="POST">
+          <form action="/LandoTest/web/login" method="POST">
               <h1 class="h3 mb-3 fw-normal">Ingresa tus credenciales</h1>
               <br>
               <div class="form-floating">
