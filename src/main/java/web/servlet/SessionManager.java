@@ -26,8 +26,14 @@ public class SessionManager extends HttpServlet {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = request.getSession();
-        session.invalidate();
-        httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
+
+        // Check for "invalidate" from header's Sign Out button
+        boolean invalidateSession = Boolean.parseBoolean((String) httpRequest.getParameter("invalidate"));
+        if (invalidateSession) {
+            session.invalidate();
+        }
+
+        httpResponse.sendRedirect(httpRequest.getContextPath() + "/");
 
     }
 }
