@@ -17,7 +17,7 @@ public class SessionFilter implements Filter {
         boolean hasAccess = Boolean.parseBoolean((String) session.getAttribute("hasAccess"));
 
         if (!hasAccess) {
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.html");
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

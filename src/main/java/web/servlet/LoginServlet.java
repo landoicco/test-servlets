@@ -15,11 +15,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if (hasAccess(colaborador, password)) {
-            request.setAttribute("hasAccess", "true");
-            request.setAttribute("colaborador", colaborador);
-            RequestDispatcher rq = request.getRequestDispatcher("/web/sessionmanager.html");
-            rq.include(request, response);
-            response.sendRedirect(request.getContextPath() + "/home");
+
+            HttpSession session = request.getSession();
+            session.setAttribute("name", colaborador);
+            session.setAttribute("hasAccess", "true");
+
+            response.sendRedirect(request.getContextPath() + "/secret/home");
             return;
         }
         request.setAttribute("wrongData", "true");

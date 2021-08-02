@@ -17,14 +17,14 @@
         <url-pattern>/web/login</url-pattern>
     </servlet-mapping>
 
-    <!-- mapping SessionManager -->
+    <!-- mapping LogoutServlet -->
     <servlet>
-        <servlet-name>SessionManager</servlet-name>
-        <servlet-class>web.servlet.SessionManager</servlet-class>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>web.servlet.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SessionManager</servlet-name>
-        <url-pattern>/web/sessionmanager.html</url-pattern>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/web/logout</url-pattern>
     </servlet-mapping>
 
     <!--                      ===== JSP's ====               -->
@@ -46,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeJSP</servlet-name>
-        <url-pattern>/home</url-pattern>
+        <url-pattern>/secret/home</url-pattern>
     </servlet-mapping>
 
     <!-- mapping JokeOneJSP -->
