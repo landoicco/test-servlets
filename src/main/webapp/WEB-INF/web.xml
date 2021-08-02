@@ -111,6 +111,16 @@
         <url-pattern>/html/footer.html</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping welcome.html -->
+    <servlet>
+        <servlet-name>WelcomeHTML</servlet-name>
+        <jsp-file>/WEB-INF/html/welcome.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomeHTML</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== FILTERS ====               -->
 
     <!-- Mapping for the LoginFilter -->
