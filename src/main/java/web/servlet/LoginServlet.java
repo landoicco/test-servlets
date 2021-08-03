@@ -33,14 +33,15 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("user", newUser);
-            session.setAttribute("hasAccess", "true");
 
             response.sendRedirect(request.getContextPath() + "/secret/home");
             return;
         }
+
         request.setAttribute("wrongData", "true");
         RequestDispatcher rq = request.getRequestDispatcher("/login");
         rq.forward(request, response);
+
     }
 
     private User[] getDevTeam() {
@@ -60,10 +61,9 @@ public class LoginServlet extends HttpServlet {
 
     private User getUser(LoginRequester loginRequester) {
 
-        // Pasar parametros a mayusculas
         String newColab = loginRequester.getName();
 
-        // Comprobar acceso
+        // Comprobar que existe el usuario solicitado
         for (User d : devTeam) {
             if (newColab.equals(d.getName()) &&
                     d.getPassword().equals(loginRequester.getPassword())) {

@@ -2,6 +2,7 @@ package web.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import local.user.User;
 
 import java.io.IOException;
 
@@ -14,9 +15,9 @@ public class SessionFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpRequest.getSession();
-        boolean hasAccess = Boolean.parseBoolean((String) session.getAttribute("hasAccess"));
+        User user = (User) session.getAttribute("user");
 
-        if (!hasAccess) {
+        if (user == null) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         }
 
