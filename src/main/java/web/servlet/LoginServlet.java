@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import local.user.LoginRequester;
 
 public class LoginServlet extends HttpServlet {
 
@@ -14,7 +15,10 @@ public class LoginServlet extends HttpServlet {
         String colaborador = request.getParameter("colaborador");
         String password = request.getParameter("password");
 
-        if (hasAccess(colaborador, password)) {
+        // Create a LoginRequester object
+        LoginRequester loginRequester = new LoginRequester(colaborador, password);
+
+        if (hasAccess(loginRequester)) {
 
             HttpSession session = request.getSession();
             session.setAttribute("name", colaborador);
@@ -28,15 +32,15 @@ public class LoginServlet extends HttpServlet {
         rq.forward(request, response);
     }
 
-    private boolean hasAccess(String colaborador, String password) {
+    private boolean hasAccess(LoginRequester loginRequester) {
 
         // Pasar parametros a mayusculas
-        String newColab = colaborador.toUpperCase();
+        String newColab = loginRequester.getName().toUpperCase();
 
         // Comprobar acceso
         String[] colaboradores = {"CARLOS", "GABRIEL", "JAIR", "LANDO", "ALBERTO", "OSCAR"};
         for (String c : colaboradores) {
-            if (newColab.equals(c) && "TCS".equals(password)) {
+            if (newColab.equals(c) && "TCS".equals(loginRequester.getPassword())) {
                 return true;
             }
         }

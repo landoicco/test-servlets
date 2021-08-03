@@ -52,7 +52,7 @@
     <!-- mapping JokeOneJSP -->
     <servlet>
         <servlet-name>JokeOneJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/jokes/JokeOne.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/secret/JokeOne.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>JokeOneJSP</servlet-name>
@@ -62,7 +62,7 @@
     <!-- mapping JokeTwoJSP -->
     <servlet>
         <servlet-name>JokeTwoJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/jokes/JokeTwo.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/secret/JokeTwo.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>JokeTwoJSP</servlet-name>
@@ -72,7 +72,7 @@
     <!-- mapping JokeThreeJSP -->
     <servlet>
         <servlet-name>JokeThreeJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/jokes/JokeThree.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/secret/JokeThree.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>JokeThreeJSP</servlet-name>
@@ -82,7 +82,7 @@
     <!-- mapping JokeFourJSP -->
     <servlet>
         <servlet-name>JokeFourJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/jokes/JokeFour.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsp/secret/JokeFour.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>JokeFourJSP</servlet-name>

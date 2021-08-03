@@ -17,6 +17,7 @@
 
     <build>
         <finalName>LandoTest</finalName>
+        <directory>C:\Program Files\Apache Software Foundation\Tomcat 10.0\webapps</directory>
     </build>
     <dependencies>
 
