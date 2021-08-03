@@ -53,19 +53,15 @@ public class LoginServlet extends HttpServlet {
         User userAlberto = new User("Alberto", "albertoTCS", 40);
         User userLando = new User("Lando", "landoTCS", 40);
 
-        User[] devs = {userAlberto, userCarlos, userLando, userGabriel, userJair, userOscar};
-
-        return devs;
+        return new User[]{userAlberto, userCarlos, userLando, userGabriel, userJair, userOscar};
 
     }
 
     private User getUser(LoginRequester loginRequester) {
 
-        String newColab = loginRequester.getName();
-
         // Comprobar que existe el usuario solicitado
         for (User d : devTeam) {
-            if (newColab.equals(d.getName()) &&
+            if (d.getName().equals(loginRequester.getName()) &&
                     d.getPassword().equals(loginRequester.getPassword())) {
                 return d;
             }
