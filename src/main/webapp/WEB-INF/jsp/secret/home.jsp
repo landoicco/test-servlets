@@ -1,7 +1,8 @@
 <html>
+<%@ page import="local.user.User" %>
 <%
 // Get Colab name
-String colabName = (String)session.getAttribute("name");
+String colabName = ((User)session.getAttribute("user")).getName();
 %>
 <%@include file="/WEB-INF/html/header.html"%>
 <body>

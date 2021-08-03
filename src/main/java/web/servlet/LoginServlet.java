@@ -4,13 +4,22 @@ import java.io.IOException;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import local.user.LoginRequester;
+import local.user.*;
 
 public class LoginServlet extends HttpServlet {
+
+    User[] devTeam;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        if (devTeam == null) {
+
+            devTeam = getDevTeam();
+
+        }
+
         // Recuperar parametros de la peticion
         String colaborador = request.getParameter("colaborador");
         String password = request.getParameter("password");
@@ -18,10 +27,12 @@ public class LoginServlet extends HttpServlet {
         // Create a LoginRequester object
         LoginRequester loginRequester = new LoginRequester(colaborador, password);
 
-        if (hasAccess(loginRequester)) {
+        User newUser = getUser(loginRequester);
+
+        if (newUser != null) {
 
             HttpSession session = request.getSession();
-            session.setAttribute("name", colaborador);
+            session.setAttribute("user", newUser);
             session.setAttribute("hasAccess", "true");
 
             response.sendRedirect(request.getContextPath() + "/secret/home");
@@ -32,18 +43,33 @@ public class LoginServlet extends HttpServlet {
         rq.forward(request, response);
     }
 
-    private boolean hasAccess(LoginRequester loginRequester) {
+    private User[] getDevTeam() {
+
+        User userCarlos = new User("Carlos", "carlosTCS", 40);
+        User userGabriel = new User("Gabriel", "gabrielTCS", 40);
+        User userJair = new User("Jair", "jairTCS", 40);
+        User userOscar = new User("Oscar", "oscarTCS", 40);
+        User userAlberto = new User("Alberto", "albertoTCS", 40);
+        User userLando = new User("Lando", "landoTCS", 40);
+
+        User[] devs = {userAlberto, userCarlos, userLando, userGabriel, userJair, userOscar};
+
+        return devs;
+
+    }
+
+    private User getUser(LoginRequester loginRequester) {
 
         // Pasar parametros a mayusculas
-        String newColab = loginRequester.getName().toUpperCase();
+        String newColab = loginRequester.getName();
 
         // Comprobar acceso
-        String[] colaboradores = {"CARLOS", "GABRIEL", "JAIR", "LANDO", "ALBERTO", "OSCAR"};
-        for (String c : colaboradores) {
-            if (newColab.equals(c) && "TCS".equals(loginRequester.getPassword())) {
-                return true;
+        for (User d : devTeam) {
+            if (newColab.equals(d.getName()) &&
+                    d.getPassword().equals(loginRequester.getPassword())) {
+                return d;
             }
         }
-        return false;
+        return null;
     }
 }
