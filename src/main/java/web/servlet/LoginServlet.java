@@ -27,12 +27,12 @@ public class LoginServlet extends HttpServlet {
         // Create a LoginRequester object
         LoginRequester loginRequester = new LoginRequester(colaborador, password);
 
-        User newUser = getUser(loginRequester);
+        User requestedUser = getUser(loginRequester);
 
-        if (newUser != null) {
+        if (requestedUser != null) {
 
             HttpSession session = request.getSession();
-            session.setAttribute("user", newUser);
+            session.setAttribute("user", requestedUser);
 
             response.sendRedirect(request.getContextPath() + "/secret/home");
             return;

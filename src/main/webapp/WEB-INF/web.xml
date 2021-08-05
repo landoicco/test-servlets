@@ -27,6 +27,16 @@
         <url-pattern>/web/logout</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping JokesServlet -->
+    <servlet>
+        <servlet-name>JokesServlet</servlet-name>
+        <servlet-class>web.servlet.JokesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokesServlet</servlet-name>
+        <url-pattern>/web/jokes</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== JSP's ====               -->
 
     <!-- mapping IndexJSP -->
@@ -88,6 +98,7 @@
         <servlet-name>JokeFourJSP</servlet-name>
         <url-pattern>/secret/jokefour.html</url-pattern>
     </servlet-mapping>
+
 
     <!--                      ===== HTML files ====               -->
 
