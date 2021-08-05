@@ -21,9 +21,8 @@ public class JokesServlet extends HttpServlet {
 
     }
 
-    private void getJokeAnswer(String joke)
-    {
-        switch (joke){
+    private void getJokeAnswer(String joke) {
+        switch (joke) {
             case "jokeone":
                 answer = "A= Inheritance";
                 break;
