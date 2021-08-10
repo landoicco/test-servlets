@@ -3,8 +3,8 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script>
             $(document).on("click", "#somebutton", function() {
-                $.get("/LandoTest/web/jokes?joke=jokeone", function(answer) {
-                    $("#answer").text(answer);
+                $.getJSON("/LandoTest/web/jokes?joke=jokeone", function(jokeResponse) {
+                    $("#answer").text(jokeResponse.Answer);
                 });
             });
         </script>
