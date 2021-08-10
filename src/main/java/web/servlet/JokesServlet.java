@@ -39,8 +39,8 @@ public class JokesServlet extends HttpServlet {
             case "jokethree":
                 jokeResponse = "{\n" +
                         "  \"Question\": \"What do cats and programmers have in common?\",\n" +
-                        "  \"Answer\" : \"When either one is unusually happy and excited, an appropriate question would be,\"\n" +
-                        "  \"did you find a bug?\"\n" +
+                        "  \"Answer\" : \"When either one is unusually happy and excited, an appropriate question would be," +
+                        "  did you find a bug?\"\n" +
                         "}";
                 break;
             case "jokefour":
