@@ -15,9 +15,9 @@ public class SessionFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpRequest.getSession();
-        User user = (User) session.getAttribute("user");
+        Object user = session.getAttribute("user");
 
-        if (user == null) {
+        if (!(user instanceof User)) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         }
 

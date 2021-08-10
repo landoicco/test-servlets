@@ -2,7 +2,7 @@
 <%@ page import="local.user.User" %>
 <%
 // Get Colab name
-String colabName = ((User)session.getAttribute("user")).getName();
+String colabName = session.getAttribute("user") != null ? ((User)session.getAttribute("user")).getName() : "null";
 %>
 <%@include file="/WEB-INF/html/header.html"%>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
