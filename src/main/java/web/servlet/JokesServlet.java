@@ -26,7 +26,7 @@ public class JokesServlet extends HttpServlet {
         switch (joke) {
             case "jokeone":
                 jokeResponse = "{\n" +
-                        "  \"Question\": \"Whats the object-oriented way to become wealthy\",\n" +
+                        "  \"Question\": \"Whats the object-oriented way to become wealthy?\",\n" +
                         "  \"Answer\" : \"Inheritance\"\n" +
                         "}";
                 break;

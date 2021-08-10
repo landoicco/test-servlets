@@ -39,7 +39,7 @@
 
     <!--                      ===== JSP's ====               -->
 
-    <!-- mapping IndexJSP -->
+    <!-- mapping LoginJSP -->
     <servlet>
         <servlet-name>LoginJSP</servlet-name>
         <jsp-file>/WEB-INF/jsp/public/login.jsp</jsp-file>
@@ -97,6 +97,16 @@
     <servlet-mapping>
         <servlet-name>JokeFourJSP</servlet-name>
         <url-pattern>/secret/jokefour.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping JokesHomeJSP -->
+    <servlet>
+        <servlet-name>JokesHomeJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/secret/JokesHome.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JokesHomeJSP</servlet-name>
+        <url-pattern>/secret/jokes</url-pattern>
     </servlet-mapping>
 
 
