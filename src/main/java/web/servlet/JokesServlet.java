@@ -15,14 +15,14 @@ public class JokesServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
 
-        getJokeAnswer(req.getParameter("joke"));
+        getJoke(req.getParameter("joke"));
 
         //resp.getWriter().append(jokeResponse);
         resp.getWriter().write(jokeResponse);
 
     }
 
-    private void getJokeAnswer(String joke) {
+    private void getJoke(String joke) {
         switch (joke) {
             case "jokeone":
                 jokeResponse = "{\n" +
