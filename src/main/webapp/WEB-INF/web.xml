@@ -59,6 +59,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping RegisterJSP -->
+    <servlet>
+        <servlet-name>RegisterJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/public/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterJSP</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
     <!-- mapping WelcomeJSP -->
     <servlet>
         <servlet-name>HomeJSP</servlet-name>

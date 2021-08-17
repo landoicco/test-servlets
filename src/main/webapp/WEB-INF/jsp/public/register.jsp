@@ -1,5 +1,5 @@
 <html>
- <% 
+ <%
    String message = "";
    // Get wrongData from string and convert to boolean
    boolean wrongData = Boolean.parseBoolean((String)request.getAttribute("wrongData"));
@@ -74,18 +74,26 @@
 
       <main class="form-signin">
           <form action="/LandoTest/web/login" method="POST">
-              <h1 class="h3 mb-3 fw-normal">Ingresa tus credenciales</h1>
+              <h1 class="h3 mb-3 fw-normal">Registra tus datos</h1>
               <br>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Colaborador" name="colaborador">
-                  <label for="floatingInput">Colaborador</label>
+                  <input type="text" class="form-control" id="floatingInput" placeholder="PrimerNombre" name="firstname">
+                  <label for="floatingInput">Primer Nombre</label>
+              </div>
+              <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" name="lastname">
+                  <label for="floatingPassword">Apellido</label>
+              </div>
+              <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Age" name="age">
+                  <label for="floatingPassword">Edad</label>
               </div>
               <div class="form-floating">
                   <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                   <label for="floatingPassword">Password</label>
               </div>
               <p style="color:red"> <%= message %> </p>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
               <p class="mt-5 mb-3 text-muted">Lando Inc. 2021</p>
           </form>
       </main>
