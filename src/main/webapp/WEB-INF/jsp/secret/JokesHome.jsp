@@ -1,8 +1,8 @@
 <html>
-<%@ page import="local.user.User" %>
+<%@ page import="database.user.UserDTO" %>
 <%
 // Get Colab name
-String colabName = session.getAttribute("user") != null ? ((User)session.getAttribute("user")).getName() : null;
+String colabName = session.getAttribute("user") != null ? ((UserDTO)session.getAttribute("user")).getFirstName() : null;
 %>
 <%@include file="/WEB-INF/html/header.html"%>
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>

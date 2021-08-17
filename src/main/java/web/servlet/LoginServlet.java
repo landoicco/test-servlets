@@ -2,22 +2,21 @@ package web.servlet;
 
 import java.io.IOException;
 
+import database.user.*;
+import local.user.LoginRequester;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import local.user.*;
 
 public class LoginServlet extends HttpServlet {
 
-    User[] devTeam;
+    UserDAO dbGate;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (devTeam == null) {
-
-            devTeam = getDevTeam();
-
+        if (dbGate == null) {
+            dbGate = new UserJDBC();
         }
 
         // Recuperar parametros de la peticion
@@ -27,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         // Create a LoginRequester object
         LoginRequester loginRequester = new LoginRequester(colaborador, password);
 
-        User requestedUser = getUser(loginRequester);
+        UserDTO requestedUser = getUser(loginRequester);
 
         if (requestedUser != null) {
 
@@ -44,26 +43,13 @@ public class LoginServlet extends HttpServlet {
 
     }
 
-    private User[] getDevTeam() {
-
-        User userCarlos = new User("Carlos", "carlosTCS", 40);
-        User userGabriel = new User("Gabriel", "gabrielTCS", 40);
-        User userJair = new User("Jair", "jairTCS", 40);
-        User userOscar = new User("Oscar", "oscarTCS", 40);
-        User userAlberto = new User("Alberto", "albertoTCS", 40);
-        User userLando = new User("Lando", "landoTCS", 40);
-
-        return new User[]{userAlberto, userCarlos, userLando, userGabriel, userJair, userOscar};
-
-    }
-
-    private User getUser(LoginRequester loginRequester) {
+    private UserDTO getUser(LoginRequester loginRequester) {
 
         // Comprobar que existe el usuario solicitado
-        for (User d : devTeam) {
-            if (d.getName().equals(loginRequester.getName()) &&
-                    d.getPassword().equals(loginRequester.getPassword())) {
-                return d;
+        for (UserDTO u : dbGate.select()) {
+            if (u.getFirstName().equals(loginRequester.getName()) &&
+                    u.getPassword().equals(loginRequester.getPassword())) {
+                return u;
             }
         }
         return null;
