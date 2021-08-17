@@ -5,12 +5,12 @@ import java.util.List;
 
 public interface UserDAO {
 
-    List<UserDTO> select() throws SQLException;
+    List<UserDTO> select();
 
-    int insert(UserDTO user) throws SQLException;
+    int insert(UserDTO user);
 
-    int update(UserDTO user) throws SQLException;
+    int update(UserDTO user);
 
-    int delete(UserDTO user) throws SQLException;
+    int delete(UserDTO user);
 
 }

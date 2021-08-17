@@ -12,7 +12,7 @@ public class UserJDBC implements UserDAO {
     private static final String SQL_DELETE = "DELETE FROM user WHERE id_user=?";
 
     @Override
-    public List<UserDTO> select() throws SQLException {
+    public List<UserDTO> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -36,6 +36,9 @@ public class UserJDBC implements UserDAO {
                 users.add(user);
             }
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
         } finally {
             ConnectionHandler.close(rs);
             ConnectionHandler.close(stmt);
@@ -45,24 +48,75 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public int insert(UserDTO user) throws SQLException {
-//        Connection conn = null;
-//        PreparedStatement stmt = null;
-//        int rows = 0;
-//        try {
-//            conn = ConnectionHandler.getConnection();
-//            stmt
-//        }
-        return 0;
+    public int insert(UserDTO user) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = ConnectionHandler.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, user.getFirstName());
+            stmt.setString(2, user.getLastName());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getAge());
+
+            // Count of modified rows
+            rows = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionHandler.close(stmt);
+            ConnectionHandler.close(conn);
+        }
+        return rows;
     }
 
     @Override
-    public int update(UserDTO user) throws SQLException {
-        return 0;
+    public int update(UserDTO user) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+            conn = ConnectionHandler.getConnection();
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, user.getFirstName());
+            stmt.setString(2, user.getLastName());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getAge());
+            stmt.setInt(5, user.getId_user());
+
+            // Count of modified rows
+            rows = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionHandler.close(stmt);
+            ConnectionHandler.close(conn);
+        }
+        return rows;
     }
 
     @Override
-    public int delete(UserDTO user) throws SQLException {
-        return 0;
+    public int delete(UserDTO user) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+            conn = ConnectionHandler.getConnection();
+            stmt.executeQuery(SQL_DELETE);
+            stmt.setInt(1, user.getId_user());
+
+            // Count of modified rows
+            rows = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionHandler.close(stmt);
+            ConnectionHandler.close(conn);
+        }
+        return rows;
     }
 }
