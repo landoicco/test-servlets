@@ -37,6 +37,16 @@
         <url-pattern>/web/jokes</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping TestDBServlet -->
+    <servlet>
+        <servlet-name>TestDBServlet</servlet-name>
+        <servlet-class>web.servlet.TestingDBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestDBServlet</servlet-name>
+        <url-pattern>/testdb</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== JSP's ====               -->
 
     <!-- mapping LoginJSP -->
