@@ -9,7 +9,7 @@ public interface UserDAO {
 
     int insert(UserDTO user);
 
-    int update(UserDTO user);
+    int update(UserDTO newUser, UserDTO oldUser);
 
     int delete(UserDTO user);
 

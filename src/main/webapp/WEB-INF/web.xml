@@ -57,6 +57,16 @@
         <url-pattern>/web/register</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping InfoUpdaterServlet -->
+    <servlet>
+        <servlet-name>InfoUpdaterServlet</servlet-name>
+        <servlet-class>web.servlet.InfoUpdaterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfoUpdaterServlet</servlet-name>
+        <url-pattern>/web/update</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== JSP's ====               -->
 
     <!-- mapping LoginJSP -->
@@ -77,6 +87,16 @@
     <servlet-mapping>
         <servlet-name>RegisterJSP</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!-- mapping UserInfoUpdaterJSP -->
+    <servlet>
+        <servlet-name>UserInfoUpdaterJSP</servlet-name>
+        <jsp-file>/WEB-INF/jsp/secret/UserInfoUpdater.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserInfoUpdaterJSP</servlet-name>
+        <url-pattern>/secret/update</url-pattern>
     </servlet-mapping>
 
     <!-- mapping WelcomeJSP -->
