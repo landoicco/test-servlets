@@ -73,7 +73,7 @@
       <body class="text-center">
 
       <main class="form-signin">
-          <form action="/LandoTest/web/login" method="POST">
+          <form action="/LandoTest/web/register" method="POST">
               <h1 class="h3 mb-3 fw-normal">Registra tus datos</h1>
               <br>
               <div class="form-floating">

@@ -47,6 +47,16 @@
         <url-pattern>/testdb</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping RegisterServlet -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>web.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/web/register</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== JSP's ====               -->
 
     <!-- mapping LoginJSP -->
