@@ -73,7 +73,7 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public int update(UserDTO newUser, UserDTO oldUser) {
+    public int update(UserDTO user) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -81,11 +81,11 @@ public class UserJDBC implements UserDAO {
         try {
             conn = ConnectionHandler.getConnection();
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, newUser.getFirstName());
-            stmt.setString(2, newUser.getLastName());
-            stmt.setString(3, newUser.getPassword());
-            stmt.setInt(4, newUser.getAge());
-            stmt.setInt(5, oldUser.getId_user());
+            stmt.setString(1, user.getFirstName());
+            stmt.setString(2, user.getLastName());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getAge());
+            stmt.setInt(5, user.getId_user());
 
             // Count of modified rows
             rows = stmt.executeUpdate();

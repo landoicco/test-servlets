@@ -38,7 +38,7 @@ public class InfoUpdaterServlet extends HttpServlet {
             }
 
             //Actualizar usuario en DB
-            dbGate.update(updatedUser, oldUser);
+            dbGate.update(updatedUser);
 
             //Actualiar usuario en HttpSession
             session.setAttribute("user", updatedUser);
@@ -81,6 +81,6 @@ public class InfoUpdaterServlet extends HttpServlet {
             }
         }
 
-        return new UserDTO(updatedFirstName, updatedLastName, updatedPassword, updatedAge);
+        return new UserDTO(oldUser.getId_user(), updatedFirstName, updatedLastName, updatedPassword, updatedAge);
     }
 }
