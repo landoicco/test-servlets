@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import local.user.LoginRequester;
 import local.user.RegisterRequester;
 
 import java.io.IOException;
@@ -37,12 +38,15 @@ public class RegisterServlet extends HttpServlet {
 
             //Crear objeto UserDTO
             UserDTO newUser = new UserDTO(firstName, lastName, password, age);
-            // INSERT a la base de datos
+            // INSERT a DB
             dbGate.insert(newUser);
+
+            //Get newUser from DB with id_user
+            UserDTO user = (getUser(newUser) != null) ? getUser(newUser) : newUser;
 
             //Crear HttpSession
             HttpSession session = request.getSession();
-            session.setAttribute("user", newUser);
+            session.setAttribute("user", user);
 
             //Redireccionar a jokes ya con session creada
             response.sendRedirect(request.getContextPath() + "/secret/jokes");
@@ -69,5 +73,17 @@ public class RegisterServlet extends HttpServlet {
         }
         return true;
 
+    }
+
+    private UserDTO getUser(UserDTO user) {
+
+        // Comprobar que existe el usuario solicitado
+        for (UserDTO u : dbGate.select()) {
+            if (u.getFirstName().equals(user.getFirstName()) &&
+                    u.getPassword().equals(user.getPassword())) {
+                return u;
+            }
+        }
+        return null;
     }
 }
