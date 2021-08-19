@@ -94,6 +94,9 @@
               </div>
               <p style="color:red"> <%= message %> </p>
               <button class="w-100 btn btn-lg btn-primary" type="submit">Actualizar</button>
+              <a href="/LandoTest/web/remove">
+              <button class="w-100 btn btn-lg btn-outline-primary" type="button">Eliminar mi cuenta</button>
+              </a>
               <p class="mt-5 mb-3 text-muted">Lando Inc. 2021</p>
           </form>
       </main>
