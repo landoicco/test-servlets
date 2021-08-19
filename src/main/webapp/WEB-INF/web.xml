@@ -67,6 +67,16 @@
         <url-pattern>/web/update</url-pattern>
     </servlet-mapping>
 
+    <!-- mapping RemoverServlet -->
+    <servlet>
+        <servlet-name>RemoverServlet</servlet-name>
+        <servlet-class>web.servlet.RemoverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoverServlet</servlet-name>
+        <url-pattern>/web/remove</url-pattern>
+    </servlet-mapping>
+
     <!--                      ===== JSP's ====               -->
 
     <!-- mapping LoginJSP -->

@@ -106,7 +106,7 @@ public class UserJDBC implements UserDAO {
 
         try {
             conn = ConnectionHandler.getConnection();
-            stmt.executeQuery(SQL_DELETE);
+            stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setInt(1, user.getId_user());
 
             // Count of modified rows
