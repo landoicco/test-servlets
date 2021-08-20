@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.user;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;

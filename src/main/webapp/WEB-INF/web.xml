@@ -10,7 +10,7 @@
     <!-- mapping LoginServlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>web.servlet.LoginServlet</servlet-class>
+        <servlet-class>web.servlet.user.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -20,7 +20,7 @@
     <!-- mapping LogoutServlet -->
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>web.servlet.LogoutServlet</servlet-class>
+        <servlet-class>web.servlet.user.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -30,27 +30,17 @@
     <!-- mapping JokesServlet -->
     <servlet>
         <servlet-name>JokesServlet</servlet-name>
-        <servlet-class>web.servlet.JokesServlet</servlet-class>
+        <servlet-class>web.servlet.jokes.JokesServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>JokesServlet</servlet-name>
         <url-pattern>/web/jokes</url-pattern>
     </servlet-mapping>
 
-    <!-- mapping TestDBServlet -->
-    <servlet>
-        <servlet-name>TestDBServlet</servlet-name>
-        <servlet-class>web.servlet.TestingDBServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TestDBServlet</servlet-name>
-        <url-pattern>/testdb</url-pattern>
-    </servlet-mapping>
-
     <!-- mapping RegisterServlet -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>web.servlet.RegisterServlet</servlet-class>
+        <servlet-class>web.servlet.user.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -60,7 +50,7 @@
     <!-- mapping InfoUpdaterServlet -->
     <servlet>
         <servlet-name>InfoUpdaterServlet</servlet-name>
-        <servlet-class>web.servlet.InfoUpdaterServlet</servlet-class>
+        <servlet-class>web.servlet.user.InfoUpdaterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InfoUpdaterServlet</servlet-name>
@@ -70,7 +60,7 @@
     <!-- mapping RemoverServlet -->
     <servlet>
         <servlet-name>RemoverServlet</servlet-name>
-        <servlet-class>web.servlet.RemoverServlet</servlet-class>
+        <servlet-class>web.servlet.user.RemoverServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RemoverServlet</servlet-name>
@@ -107,56 +97,6 @@
     <servlet-mapping>
         <servlet-name>UserInfoUpdaterJSP</servlet-name>
         <url-pattern>/secret/update</url-pattern>
-    </servlet-mapping>
-
-    <!-- mapping WelcomeJSP -->
-    <servlet>
-        <servlet-name>HomeJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/secret/home.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HomeJSP</servlet-name>
-        <url-pattern>/secret/home</url-pattern>
-    </servlet-mapping>
-
-    <!-- mapping JokeOneJSP -->
-    <servlet>
-        <servlet-name>JokeOneJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/secret/JokeOne.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JokeOneJSP</servlet-name>
-        <url-pattern>/secret/jokeone.html</url-pattern>
-    </servlet-mapping>
-
-    <!-- mapping JokeTwoJSP -->
-    <servlet>
-        <servlet-name>JokeTwoJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/secret/JokeTwo.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JokeTwoJSP</servlet-name>
-        <url-pattern>/secret/joketwo.html</url-pattern>
-    </servlet-mapping>
-
-    <!-- mapping JokeThreeJSP -->
-    <servlet>
-        <servlet-name>JokeThreeJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/secret/JokeThree.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JokeThreeJSP</servlet-name>
-        <url-pattern>/secret/jokethree.html</url-pattern>
-    </servlet-mapping>
-
-    <!-- mapping JokeFourJSP -->
-    <servlet>
-        <servlet-name>JokeFourJSP</servlet-name>
-        <jsp-file>/WEB-INF/jsp/secret/JokeFour.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JokeFourJSP</servlet-name>
-        <url-pattern>/secret/jokefour.html</url-pattern>
     </servlet-mapping>
 
     <!-- mapping JokesHomeJSP -->

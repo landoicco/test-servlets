@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.user;
 
 import local.user.User;
 import database.user.UserDAO;
