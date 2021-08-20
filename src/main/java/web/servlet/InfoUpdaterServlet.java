@@ -26,16 +26,16 @@ public class InfoUpdaterServlet extends HttpServlet {
 
         RegisterRequester updatedData = new RegisterRequester(firstName, lastName, password, ageString);
 
-        //Recuperar informacion de HttpSession
-        HttpSession session = request.getSession();
-        UserDTO oldUser = (UserDTO) session.getAttribute("user");
-
-        UserDTO updatedUser = getUpdatedUser(oldUser, updatedData);
-
-        if (updatedUser != null) {
+        if (isValidData(updatedData)) {
             if (dbGate == null) {
                 dbGate = new UserJDBC();
             }
+
+            //Recuperar informacion de HttpSession
+            HttpSession session = request.getSession();
+            UserDTO oldUser = (UserDTO) session.getAttribute("user");
+
+            UserDTO updatedUser = getUpdatedUser(oldUser, updatedData);
 
             //Actualizar usuario en DB
             dbGate.update(updatedUser);
@@ -57,11 +57,6 @@ public class InfoUpdaterServlet extends HttpServlet {
 
     private UserDTO getUpdatedUser(UserDTO oldUser, RegisterRequester updatedData) {
 
-        //Verificar que al menos hay un valor por actualizar
-        if ("".equals(updatedData.getFirstName()) && "".equals(updatedData.getLastName()) &&
-                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge())) {
-            return null;
-        }
 
         // Ver que campos fueron actualizados!
         String updatedFirstName = "".equals(updatedData.getFirstName()) ?
@@ -70,17 +65,28 @@ public class InfoUpdaterServlet extends HttpServlet {
                 oldUser.getLastName() : updatedData.getLastName();
         String updatedPassword = "".equals(updatedData.getPassword()) ?
                 oldUser.getPassword() : updatedData.getPassword();
+        int updatedAge = "".equals(updatedData.getAge()) ?
+                oldUser.getAge() : Integer.parseInt(updatedData.getAge());
 
+        return new UserDTO(oldUser.getId_user(), updatedFirstName,
+                updatedLastName, updatedPassword, updatedAge);
+    }
+
+    private boolean isValidData(RegisterRequester updatedData) {
+
+        //Verificar que al menos hay un valor por actualizar
+        if ("".equals(updatedData.getFirstName()) && "".equals(updatedData.getLastName()) &&
+                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge())) {
+            return false;
+        }
         //Verificar que age sea un entero válido
-        int updatedAge = oldUser.getAge();
         if (!("".equals(updatedData.getAge()))) {
             try {
-                updatedAge = Integer.parseInt(updatedData.getAge());
+                Integer.parseInt(updatedData.getAge());
             } catch (NumberFormatException ex) {
-                return null;
+                return false;
             }
         }
-
-        return new UserDTO(oldUser.getId_user(), updatedFirstName, updatedLastName, updatedPassword, updatedAge);
+        return true;
     }
 }
