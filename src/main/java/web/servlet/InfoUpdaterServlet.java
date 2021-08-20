@@ -79,14 +79,14 @@ public class InfoUpdaterServlet extends HttpServlet {
                 "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge())) {
             return false;
         }
-        //Verificar que age sea un entero válido
-        if (!("".equals(updatedData.getAge()))) {
-            try {
-                Integer.parseInt(updatedData.getAge());
-            } catch (NumberFormatException ex) {
-                return false;
-            }
+        //Verificar que la edad ingresada si sea entero
+        int age;
+        try {
+            age = Integer.parseInt(updatedData.getAge());
+        } catch (NumberFormatException ex) {
+            return false;
         }
-        return true;
+        return age >= 1 && age <= 99;
     }
 }
+
