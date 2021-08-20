@@ -1,7 +1,7 @@
 package web.servlet;
 
+import local.user.User;
 import database.user.UserDAO;
-import database.user.UserDTO;
 import database.user.UserJDBC;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ public class RemoverServlet extends HttpServlet {
 
         //Recuperar user de HttpSession
         HttpSession session = request.getSession();
-        UserDTO user = (UserDTO) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
 
         //Abrir acceso a DB si no esta abierta ya!
         if (dbGate == null) {

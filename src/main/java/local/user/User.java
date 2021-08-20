@@ -1,6 +1,6 @@
-package database.user;
+package local.user;
 
-public class UserDTO {
+public class User {
 
     private int id_user;
     private String firstName;
@@ -8,14 +8,14 @@ public class UserDTO {
     private String password;
     private int age;
 
-    public UserDTO(String firstName, String lastName, String password, int age) {
+    public User(String firstName, String lastName, String password, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.age = age;
     }
 
-    public UserDTO(int id_user, String firstName, String lastName, String password, int age) {
+    public User(int id_user, String firstName, String lastName, String password, int age) {
         this.id_user = id_user;
         this.firstName = firstName;
         this.lastName = lastName;

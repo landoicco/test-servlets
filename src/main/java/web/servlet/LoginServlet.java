@@ -6,6 +6,7 @@ import database.user.*;
 import local.user.LoginRequester;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import local.user.User;
 
 public class LoginServlet extends HttpServlet {
 
@@ -26,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         // Create a LoginRequester object
         LoginRequester loginRequester = new LoginRequester(colaborador, password);
 
-        UserDTO requestedUser = getUser(loginRequester);
+        User requestedUser = getUser(loginRequester);
 
         if (requestedUser != null) {
 
@@ -43,10 +44,10 @@ public class LoginServlet extends HttpServlet {
 
     }
 
-    private UserDTO getUser(LoginRequester loginRequester) {
+    private User getUser(LoginRequester loginRequester) {
 
         // Comprobar que existe el usuario solicitado
-        for (UserDTO u : dbGate.select()) {
+        for (User u : dbGate.select()) {
             if (u.getFirstName().equals(loginRequester.getName()) &&
                     u.getPassword().equals(loginRequester.getPassword())) {
                 return u;

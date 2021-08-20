@@ -1,16 +1,17 @@
 package database.user;
 
-import java.sql.SQLException;
+import local.user.User;
+
 import java.util.List;
 
 public interface UserDAO {
 
-    List<UserDTO> select();
+    List<User> select();
 
-    int insert(UserDTO user);
+    int insert(User user);
 
-    int update(UserDTO user);
+    int update(User user);
 
-    int delete(UserDTO user);
+    int delete(User user);
 
 }

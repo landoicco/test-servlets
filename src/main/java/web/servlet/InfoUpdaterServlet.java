@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import local.user.RegisterRequester;
+import local.user.User;
 
 import java.io.IOException;
 
@@ -33,9 +34,9 @@ public class InfoUpdaterServlet extends HttpServlet {
 
             //Recuperar informacion de HttpSession
             HttpSession session = request.getSession();
-            UserDTO oldUser = (UserDTO) session.getAttribute("user");
+            User oldUser = (User) session.getAttribute("user");
 
-            UserDTO updatedUser = getUpdatedUser(oldUser, updatedData);
+            User updatedUser = getUpdatedUser(oldUser, updatedData);
 
             //Actualizar usuario en DB
             dbGate.update(updatedUser);
@@ -55,7 +56,7 @@ public class InfoUpdaterServlet extends HttpServlet {
 
     }
 
-    private UserDTO getUpdatedUser(UserDTO oldUser, RegisterRequester updatedData) {
+    private User getUpdatedUser(User oldUser, RegisterRequester updatedData) {
 
 
         // Ver que campos fueron actualizados!
@@ -68,7 +69,7 @@ public class InfoUpdaterServlet extends HttpServlet {
         int updatedAge = "".equals(updatedData.getAge()) ?
                 oldUser.getAge() : Integer.parseInt(updatedData.getAge());
 
-        return new UserDTO(oldUser.getId_user(), updatedFirstName,
+        return new User(oldUser.getId_user(), updatedFirstName,
                 updatedLastName, updatedPassword, updatedAge);
     }
 

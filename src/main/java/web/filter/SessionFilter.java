@@ -1,8 +1,8 @@
 package web.filter;
 
+import local.user.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import database.user.UserDTO;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class SessionFilter implements Filter {
         HttpSession session = httpRequest.getSession();
         Object user = session.getAttribute("user");
 
-        if (!(user instanceof UserDTO)) {
+        if (!(user instanceof User)) {
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
         }
 

@@ -1,5 +1,7 @@
 package database.user;
 
+import local.user.User;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +14,12 @@ public class UserJDBC implements UserDAO {
     private static final String SQL_DELETE = "DELETE FROM user WHERE id_user=?";
 
     @Override
-    public List<UserDTO> select() {
+    public List<User> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        UserDTO user;
-        List<UserDTO> users = new ArrayList<>();
+        User user;
+        List<User> users = new ArrayList<>();
 
         try {
             conn = ConnectionHandler.getConnection();
@@ -31,7 +33,7 @@ public class UserJDBC implements UserDAO {
                 String password = rs.getString("password");
                 int age = rs.getInt("age");
 
-                user = new UserDTO(id_user, firstName, lastName, password, age);
+                user = new User(id_user, firstName, lastName, password, age);
 
                 users.add(user);
             }
@@ -48,7 +50,7 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public int insert(UserDTO user) {
+    public int insert(User user) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -73,7 +75,7 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public int update(UserDTO user) {
+    public int update(User user) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -99,7 +101,7 @@ public class UserJDBC implements UserDAO {
     }
 
     @Override
-    public int delete(UserDTO user) {
+    public int delete(User user) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
