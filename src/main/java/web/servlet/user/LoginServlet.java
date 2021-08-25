@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 
         // Comprobar que existe el usuario solicitado
         for (User u : dbGate.select()) {
-            if (u.getFirstName().equals(loginRequester.getName()) &&
+            if (u.getUsername().equals(loginRequester.getUsername()) &&
                     u.getPassword().equals(loginRequester.getPassword())) {
                 return u;
             }

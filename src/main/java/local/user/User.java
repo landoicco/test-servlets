@@ -3,24 +3,31 @@ package local.user;
 public class User {
 
     private int id_user;
+    private String username;
     private String firstName;
     private String lastName;
     private String password;
     private int age;
 
-    public User(String firstName, String lastName, String password, int age) {
+    public User(String username, String firstName, String lastName, String password, int age) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.age = age;
     }
 
-    public User(int id_user, String firstName, String lastName, String password, int age) {
+    public User(int id_user, String username, String firstName, String lastName, String password, int age) {
         this.id_user = id_user;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.age = age;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getFirstName() {

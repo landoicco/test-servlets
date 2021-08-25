@@ -1,16 +1,16 @@
 package local.user;
 
 public class LoginRequester {
-    private String name;
+    private String username;
     private String password;
 
-    public LoginRequester(String name, String password) {
-        this.name = name;
+    public LoginRequester(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {

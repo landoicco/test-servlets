@@ -52,7 +52,8 @@ public class JokesServlet extends HttpServlet {
 
     private String getJoke(String joke) {
 
-        Joke requestedJoke = jokeBucket.get(joke) != null ? (Joke) jokeBucket.get(joke) : (Joke) jokeBucket.get("nulljoke");
+        Joke requestedJoke = jokeBucket.get(joke) != null ?
+                jokeBucket.get(joke) : jokeBucket.get("nulljoke");
 
         return "{\n" +
                 "  \"Question\": " + "\"" + requestedJoke.getQuestion() + "\"" + ",\n" +
