@@ -15,6 +15,7 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
 
     UserDAO dbGate;
+    String errorMessage;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +30,14 @@ public class RegisterServlet extends HttpServlet {
 
         RegisterRequester registerRequester = new RegisterRequester(username, firstName, lastName, password, ageString);
 
-        if (isValidData(registerRequester)) {
+        boolean isAValidUser = false;
+        try {
+            isAValidUser = Validator.isValidNewUser(registerRequester);
+        } catch (IllegalArgumentException ex) {
+            errorMessage = ex.getMessage();
+        }
+
+        if (isAValidUser) {
 
             //Abrir acceso a DB
             if (dbGate == null) {
@@ -55,27 +63,9 @@ public class RegisterServlet extends HttpServlet {
 
         }
 
-        request.setAttribute("wrongData", "true");
+        request.setAttribute("submitStatus", errorMessage);
         RequestDispatcher rq = request.getRequestDispatcher("/register");
         rq.forward(request, response);
-    }
-
-    private boolean isValidData(RegisterRequester requester) {
-
-        // Verificar que los datos ingresados sean válidos
-        if ("".equals(requester.getFirstName()) || "".equals(requester.getLastName()) ||
-                "".equals(requester.getAge()) || "".equals(requester.getPassword()) ||
-                "".equals(requester.getUsername())) {
-            return false;
-        }
-        //Verificar que la edad ingresada si sea entero
-        int age;
-        try {
-            age = Integer.parseInt(requester.getAge());
-        } catch (NumberFormatException ex) {
-            return false;
-        }
-        return age >= 1 && age <= 99;
     }
 
     private User getUser(User user) {
