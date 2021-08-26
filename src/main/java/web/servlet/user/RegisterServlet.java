@@ -21,12 +21,13 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Recuperar parametros del RegisterJSP
+        String username = request.getParameter("username");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String ageString = request.getParameter("age");
         String password = request.getParameter("password");
 
-        RegisterRequester registerRequester = new RegisterRequester(firstName, lastName, password, ageString);
+        RegisterRequester registerRequester = new RegisterRequester(username, firstName, lastName, password, ageString);
 
         if (isValidData(registerRequester)) {
 
@@ -36,7 +37,7 @@ public class RegisterServlet extends HttpServlet {
             }
 
             //Crear objeto User
-            User newUser = new User(firstName, lastName, password,
+            User newUser = new User(username, firstName, lastName, password,
                     Integer.parseInt(ageString));
             // INSERT a DB
             dbGate.insert(newUser);
@@ -63,7 +64,8 @@ public class RegisterServlet extends HttpServlet {
 
         // Verificar que los datos ingresados sean válidos
         if ("".equals(requester.getFirstName()) || "".equals(requester.getLastName()) ||
-                "".equals(requester.getAge()) || "".equals(requester.getPassword())) {
+                "".equals(requester.getAge()) || "".equals(requester.getPassword()) ||
+                "".equals(requester.getUsername())) {
             return false;
         }
         //Verificar que la edad ingresada si sea entero
@@ -80,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
 
         // Comprobar que existe el usuario solicitado
         for (User u : dbGate.select()) {
-            if (u.getFirstName().equals(user.getFirstName()) &&
+            if (u.getUsername().equals(user.getUsername()) &&
                     u.getPassword().equals(user.getPassword())) {
                 return u;
             }

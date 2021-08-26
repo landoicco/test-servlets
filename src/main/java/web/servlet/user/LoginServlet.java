@@ -21,11 +21,11 @@ public class LoginServlet extends HttpServlet {
         }
 
         // Recuperar parametros de la peticion
-        String colaborador = request.getParameter("colaborador");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         // Create a LoginRequester object
-        LoginRequester loginRequester = new LoginRequester(colaborador, password);
+        LoginRequester loginRequester = new LoginRequester(username, password);
 
         User requestedUser = getUser(loginRequester);
 

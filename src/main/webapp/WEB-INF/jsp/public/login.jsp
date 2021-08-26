@@ -77,8 +77,8 @@
               <h1 class="h3 mb-3 fw-normal">Ingresa tus credenciales</h1>
               <br>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Colaborador" name="colaborador">
-                  <label for="floatingInput">Colaborador</label>
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                  <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating">
                   <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">

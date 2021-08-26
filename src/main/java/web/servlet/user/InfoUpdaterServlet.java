@@ -20,12 +20,13 @@ public class InfoUpdaterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Recuperar parametros del RegisterJSP
+        String username = request.getParameter("username");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String ageString = request.getParameter("age");
         String password = request.getParameter("password");
 
-        RegisterRequester updatedData = new RegisterRequester(firstName, lastName, password, ageString);
+        RegisterRequester updatedData = new RegisterRequester(username, firstName, lastName, password, ageString);
 
         if (isValidData(updatedData)) {
             if (dbGate == null) {
@@ -60,6 +61,8 @@ public class InfoUpdaterServlet extends HttpServlet {
 
 
         // Ver que campos fueron actualizados!
+        String updatedUsername = "".equals(updatedData.getUsername()) ?
+                oldUser.getUsername() : updatedData.getUsername();
         String updatedFirstName = "".equals(updatedData.getFirstName()) ?
                 oldUser.getFirstName() : updatedData.getFirstName();
         String updatedLastName = "".equals(updatedData.getLastName()) ?
@@ -69,7 +72,7 @@ public class InfoUpdaterServlet extends HttpServlet {
         int updatedAge = "".equals(updatedData.getAge()) ?
                 oldUser.getAge() : Integer.parseInt(updatedData.getAge());
 
-        return new User(oldUser.getId_user(), updatedFirstName,
+        return new User(oldUser.getId_user(), updatedUsername, updatedFirstName,
                 updatedLastName, updatedPassword, updatedAge);
     }
 
@@ -77,17 +80,21 @@ public class InfoUpdaterServlet extends HttpServlet {
 
         //Verificar que al menos hay un valor por actualizar
         if ("".equals(updatedData.getFirstName()) && "".equals(updatedData.getLastName()) &&
-                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge())) {
+                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge()) &&
+                "".equals(updatedData.getUsername())) {
             return false;
         }
         //Verificar que la edad ingresada si sea entero
-        int age;
-        try {
-            age = Integer.parseInt(updatedData.getAge());
-        } catch (NumberFormatException ex) {
-            return false;
+        if (!("".equals(updatedData.getAge()))) {
+            int age = 0;
+            try {
+                age = Integer.parseInt(updatedData.getAge());
+            } catch (NumberFormatException ex) {
+                return false;
+            }
+            return age >= 1 && age <= 99;
         }
-        return age >= 1 && age <= 99;
+        return true;
     }
 }
 

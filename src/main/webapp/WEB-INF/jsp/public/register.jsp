@@ -77,6 +77,10 @@
               <h1 class="h3 mb-3 fw-normal">Registra tus datos</h1>
               <br>
               <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                  <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating">
                   <input type="text" class="form-control" id="floatingInput" placeholder="PrimerNombre" name="firstname">
                   <label for="floatingInput">Primer Nombre</label>
               </div>
