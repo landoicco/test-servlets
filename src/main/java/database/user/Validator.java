@@ -19,16 +19,34 @@ public class Validator {
                 "".equals(requester.getUsername())) {
             throw new IllegalArgumentException("All fields are required");
         }
-        if (!isValidAge(requester.getAge())) {
+        if (invalidAge(requester.getAge())) {
             throw new IllegalArgumentException("Invalid age");
         }
-        if (!isValidUsername(requester.getUsername())) {
+        if (existingUsername(requester.getUsername())) {
             throw new IllegalArgumentException("That username already exists");
         }
         return true;
     }
 
-    public static boolean isValidAge(String ageString) {
+    public static boolean isValidDataUpdate(RegisterRequester updatedData) {
+
+        //Verificar que al menos hay un valor por actualizar
+        if ("".equals(updatedData.getFirstName()) && "".equals(updatedData.getLastName()) &&
+                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge()) &&
+                "".equals(updatedData.getUsername())) {
+            throw new IllegalArgumentException("No data to update");
+        }
+        if (!("".equals(updatedData.getAge())) && invalidAge(updatedData.getAge())) {
+            throw new IllegalArgumentException("Invalid age");
+        }
+        if (existingUsername(updatedData.getUsername())) {
+            throw new IllegalArgumentException("That username already exists");
+        }
+        return true;
+
+    }
+
+    private static boolean invalidAge(String ageString) {
 
         int age;
         try {
@@ -36,18 +54,18 @@ public class Validator {
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("Invalid age", ex);
         }
-        return age >= 1 && age <= 99;
+        return age < 1 || age > 99;
 
     }
 
-    public static boolean isValidUsername(String username) {
+    private static boolean existingUsername(String username) {
 
         for (User u : dbGate.select()) {
             if (username.equals(u.getUsername())) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
 }

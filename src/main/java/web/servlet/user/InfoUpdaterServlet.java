@@ -15,6 +15,7 @@ import java.io.IOException;
 public class InfoUpdaterServlet extends HttpServlet {
 
     UserDAO dbGate;
+    String errorMessage;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +29,14 @@ public class InfoUpdaterServlet extends HttpServlet {
 
         RegisterRequester updatedData = new RegisterRequester(username, firstName, lastName, password, ageString);
 
-        if (isValidData(updatedData)) {
+        boolean validUpdate = false;
+        try {
+            validUpdate = Validator.isValidDataUpdate(updatedData);
+        } catch (IllegalArgumentException ex) {
+            errorMessage = ex.getMessage();
+        }
+
+        if (validUpdate) {
             if (dbGate == null) {
                 dbGate = new UserJDBC();
             }
@@ -51,7 +59,7 @@ public class InfoUpdaterServlet extends HttpServlet {
             return;
         }
 
-        request.setAttribute("wrongData", "true");
+        request.setAttribute("submitStatus", errorMessage);
         RequestDispatcher rq = request.getRequestDispatcher("/secret/update");
         rq.forward(request, response);
 
