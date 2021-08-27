@@ -11,6 +11,7 @@ import local.user.User;
 public class LoginServlet extends HttpServlet {
 
     UserDAO dbGate;
+    String errorMessage;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,9 +28,17 @@ public class LoginServlet extends HttpServlet {
         // Create a LoginRequester object
         LoginRequester loginRequester = new LoginRequester(username, password);
 
-        User requestedUser = getUser(loginRequester);
+        boolean existsUser = false;
 
-        if (requestedUser != null) {
+        try {
+            existsUser = Validator.existsUser(loginRequester);
+        } catch (IllegalArgumentException ex) {
+            errorMessage = ex.getMessage();
+        }
+
+        if (existsUser) {
+
+            User requestedUser = getUser(loginRequester);
 
             HttpSession session = request.getSession();
             session.setAttribute("user", requestedUser);
@@ -38,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        request.setAttribute("wrongData", "true");
+        request.setAttribute("submitStatus", errorMessage);
         RequestDispatcher rq = request.getRequestDispatcher("/login");
         rq.forward(request, response);
 
@@ -46,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 
     private User getUser(LoginRequester loginRequester) {
 
-        // Comprobar que existe el usuario solicitado
+        // Devolver usuario de DB
         for (User u : dbGate.select()) {
             if (u.getUsername().equals(loginRequester.getUsername()) &&
                     u.getPassword().equals(loginRequester.getPassword())) {

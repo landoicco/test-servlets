@@ -1,5 +1,6 @@
 package database.user;
 
+import local.user.LoginRequester;
 import local.user.RegisterRequester;
 import local.user.User;
 
@@ -44,6 +45,24 @@ public class Validator {
         }
         return true;
 
+    }
+
+    public static boolean existsUser(LoginRequester requester) {
+
+        if ("".equals(requester.getUsername()) || "".equals(requester.getPassword())) {
+            throw new IllegalArgumentException("Both fields are required");
+        }
+
+        for (User u : dbGate.select()) {
+            if (u.getUsername().equals(requester.getUsername()) &&
+                    u.getPassword().equals(requester.getPassword())) {
+                return true;
+            } else if (u.getUsername().equals(requester.getUsername()) &&
+                    !u.getPassword().equals(requester.getPassword())) {
+                throw new IllegalArgumentException("Wrong password");
+            }
+        }
+        throw new IllegalArgumentException("That user doesn't exists");
     }
 
     private static boolean invalidAge(String ageString) {

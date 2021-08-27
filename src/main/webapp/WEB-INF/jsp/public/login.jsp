@@ -1,12 +1,8 @@
 <html>
- <% 
-   String message = "";
-   // Get wrongData from string and convert to boolean
-   boolean wrongData = Boolean.parseBoolean((String)request.getAttribute("wrongData"));
-   if(wrongData){
-      message = "*Datos no validos*";
-   }
- %>
+<%
+   String message = (request.getAttribute("submitStatus") == null) ?
+          "" : (String) request.getAttribute("submitStatus");
+%>
       <!-- BOOTSTRAP -->
 
       <head>

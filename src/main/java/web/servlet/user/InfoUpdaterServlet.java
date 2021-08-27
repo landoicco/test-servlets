@@ -27,7 +27,8 @@ public class InfoUpdaterServlet extends HttpServlet {
         String ageString = request.getParameter("age");
         String password = request.getParameter("password");
 
-        RegisterRequester updatedData = new RegisterRequester(username, firstName, lastName, password, ageString);
+        RegisterRequester updatedData = new RegisterRequester(username, firstName,
+                lastName, password, ageString);
 
         boolean validUpdate = false;
         try {
@@ -82,27 +83,6 @@ public class InfoUpdaterServlet extends HttpServlet {
 
         return new User(oldUser.getId_user(), updatedUsername, updatedFirstName,
                 updatedLastName, updatedPassword, updatedAge);
-    }
-
-    private boolean isValidData(RegisterRequester updatedData) {
-
-        //Verificar que al menos hay un valor por actualizar
-        if ("".equals(updatedData.getFirstName()) && "".equals(updatedData.getLastName()) &&
-                "".equals(updatedData.getPassword()) && "".equals(updatedData.getAge()) &&
-                "".equals(updatedData.getUsername())) {
-            return false;
-        }
-        //Verificar que la edad ingresada si sea entero
-        if (!("".equals(updatedData.getAge()))) {
-            int age = 0;
-            try {
-                age = Integer.parseInt(updatedData.getAge());
-            } catch (NumberFormatException ex) {
-                return false;
-            }
-            return age >= 1 && age <= 99;
-        }
-        return true;
     }
 }
 
