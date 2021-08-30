@@ -64,6 +64,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         request.setAttribute("submitStatus", errorMessage);
+        request.setAttribute("registerRequester", registerRequester);
         RequestDispatcher rq = request.getRequestDispatcher("/register");
         rq.forward(request, response);
     }

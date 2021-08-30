@@ -1,5 +1,8 @@
 <html>
+<%@ page import="local.user.RegisterRequester" %>
  <%
+   RegisterRequester requester = (request.getAttribute("registerRequester") != null) ? (RegisterRequester) request.getAttribute("registerRequester") :
+          new RegisterRequester("", "", "", "", "");
    String message = (request.getAttribute("submitStatus") == null) ?
           "" : (String) request.getAttribute("submitStatus");
  %>
@@ -73,23 +76,23 @@
               <h1 class="h3 mb-3 fw-normal">Registra tus datos</h1>
               <br>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="<%=requester.getUsername()%>">
                   <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="PrimerNombre" name="firstname">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="PrimerNombre" name="firstname" value="<%=requester.getFirstName()%>">
                   <label for="floatingInput">Primer Nombre</label>
               </div>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" name="lastname">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Apellido" name="lastname" value="<%=requester.getLastName()%>">
                   <label for="floatingPassword">Apellido</label>
               </div>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Age" name="age">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Age" name="age" value="<%=requester.getAge()%>">
                   <label for="floatingPassword">Edad</label>
               </div>
               <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="<%=requester.getPassword()%>">
                   <label for="floatingPassword">Password</label>
               </div>
               <p style="color:red"> <%= message %> </p>
