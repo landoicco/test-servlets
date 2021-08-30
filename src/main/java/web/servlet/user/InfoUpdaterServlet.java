@@ -30,9 +30,14 @@ public class InfoUpdaterServlet extends HttpServlet {
         RegisterRequester updatedData = new RegisterRequester(username, firstName,
                 lastName, password, ageString);
 
+        //Recuperar informacion de HttpSession
+        HttpSession session = request.getSession();
+        User oldUser = (User) session.getAttribute("user");
+
+        boolean usernameWasUpdated = !oldUser.getUsername().equals(updatedData.getUsername());
         boolean validUpdate = false;
         try {
-            validUpdate = Validator.isValidDataUpdate(updatedData);
+            validUpdate = Validator.isValidNewUser(updatedData, usernameWasUpdated);
         } catch (IllegalArgumentException ex) {
             errorMessage = ex.getMessage();
         }
@@ -41,10 +46,6 @@ public class InfoUpdaterServlet extends HttpServlet {
             if (dbGate == null) {
                 dbGate = new UserJDBC();
             }
-
-            //Recuperar informacion de HttpSession
-            HttpSession session = request.getSession();
-            User oldUser = (User) session.getAttribute("user");
 
             User updatedUser = getUpdatedUser(oldUser, updatedData);
 
@@ -68,21 +69,9 @@ public class InfoUpdaterServlet extends HttpServlet {
 
     private User getUpdatedUser(User oldUser, RegisterRequester updatedData) {
 
+        return new User(oldUser.getId_user(), updatedData.getUsername(), updatedData.getFirstName(), updatedData.getLastName(),
+                updatedData.getPassword(), Integer.parseInt(updatedData.getAge()));
 
-        // Ver que campos fueron actualizados!
-        String updatedUsername = "".equals(updatedData.getUsername()) ?
-                oldUser.getUsername() : updatedData.getUsername();
-        String updatedFirstName = "".equals(updatedData.getFirstName()) ?
-                oldUser.getFirstName() : updatedData.getFirstName();
-        String updatedLastName = "".equals(updatedData.getLastName()) ?
-                oldUser.getLastName() : updatedData.getLastName();
-        String updatedPassword = "".equals(updatedData.getPassword()) ?
-                oldUser.getPassword() : updatedData.getPassword();
-        int updatedAge = "".equals(updatedData.getAge()) ?
-                oldUser.getAge() : Integer.parseInt(updatedData.getAge());
-
-        return new User(oldUser.getId_user(), updatedUsername, updatedFirstName,
-                updatedLastName, updatedPassword, updatedAge);
     }
 }
 
