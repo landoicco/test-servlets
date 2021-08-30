@@ -1,7 +1,8 @@
 <html>
 <%@ page import="local.user.User" %>
 <%
-User user = (User) session.getAttribute("user");
+User user = (session.getAttribute("user") != null) ? (User) session.getAttribute("user") :
+       new User("no data", "no data", "no data", "no data", -1);
 String message = (request.getAttribute("submitStatus") == null) ?
        "" : (String) request.getAttribute("submitStatus");
 %>
