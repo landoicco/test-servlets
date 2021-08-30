@@ -1,5 +1,8 @@
 <html>
+<%@ page import="local.user.LoginRequester" %>
 <%
+   LoginRequester requester = (request.getAttribute("submitStatus") != null) ? (LoginRequester) request.getAttribute("loginRequester") :
+          new LoginRequester("", "");
    String message = (request.getAttribute("submitStatus") == null) ?
           "" : (String) request.getAttribute("submitStatus");
 %>
@@ -73,11 +76,11 @@
               <h1 class="h3 mb-3 fw-normal">Ingresa tus credenciales</h1>
               <br>
               <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="<%=requester.getUsername()%>">
                   <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="<%=requester.getPassword()%>">
                   <label for="floatingPassword">Password</label>
               </div>
               <p style="color:red"> <%= message %> </p>

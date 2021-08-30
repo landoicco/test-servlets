@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         request.setAttribute("submitStatus", errorMessage);
+        request.setAttribute("loginRequester", loginRequester);
         RequestDispatcher rq = request.getRequestDispatcher("/login");
         rq.forward(request, response);
 
