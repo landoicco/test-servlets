@@ -26,7 +26,7 @@ public class Validator {
         if (invalidAge(updatedData.getAge())) {
             throw new IllegalArgumentException("Invalid age");
         }
-        if (usernameWasUpdated && existingUsername(updatedData.getUsername())) {
+        if (usernameWasUpdated && usernameAlreadyExists(updatedData.getUsername())) {
             throw new IllegalArgumentException("That username already exists");
         }
         return true;
@@ -63,7 +63,7 @@ public class Validator {
 
     }
 
-    private static boolean existingUsername(String username) {
+    private static boolean usernameAlreadyExists(String username) {
 
         for (User u : dbGate.select()) {
             if (username.equals(u.getUsername())) {

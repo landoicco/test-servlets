@@ -9,6 +9,15 @@ public class LoginRequester {
         this.password = password;
     }
 
+    private LoginRequester() {
+        this.username = "";
+        this.password = "";
+    }
+
+    public static LoginRequester createEmptyLoginRequester() {
+        return new LoginRequester();
+    }
+
     public String getUsername() {
         return username;
     }

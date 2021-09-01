@@ -11,16 +11,9 @@ public class ConnectionHandler {
     public static final String JDBC_USER = "root";
     public static final String JDBC_PASS = "admin";
 
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static DataSource getDataSource() {
         BasicDataSource ds = new BasicDataSource();
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUrl(JDBC_URL);
         ds.setUsername(JDBC_USER);
         ds.setPassword(JDBC_PASS);

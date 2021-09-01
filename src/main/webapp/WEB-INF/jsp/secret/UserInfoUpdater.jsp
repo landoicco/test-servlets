@@ -2,7 +2,7 @@
 <%@ page import="local.user.User" %>
 <%
 User user = (session.getAttribute("user") != null) ? (User) session.getAttribute("user") :
-       new User("", "", "", "", -1);
+       User.createEmptyUser();
 String message = (request.getAttribute("submitStatus") == null) ?
        "" : (String) request.getAttribute("submitStatus");
 %>

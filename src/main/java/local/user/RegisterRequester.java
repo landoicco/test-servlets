@@ -17,6 +17,18 @@ public class RegisterRequester {
         this.age = age;
     }
 
+    private RegisterRequester() {
+        this.username = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.password = "";
+        this.age = "";
+    }
+
+    public static RegisterRequester createEmptyRegisterRequester() {
+        return new RegisterRequester();
+    }
+
     public String getUsername() {
         return username;
     }

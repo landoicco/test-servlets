@@ -2,7 +2,7 @@
 <%@ page import="local.user.LoginRequester" %>
 <%
    LoginRequester requester = (request.getAttribute("loginRequester") != null) ? (LoginRequester) request.getAttribute("loginRequester") :
-          new LoginRequester("", "");
+          LoginRequester.createEmptyLoginRequester();
    String message = (request.getAttribute("submitStatus") == null) ?
           "" : (String) request.getAttribute("submitStatus");
 %>

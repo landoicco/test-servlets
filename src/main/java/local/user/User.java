@@ -26,6 +26,19 @@ public class User {
         this.age = age;
     }
 
+    private User() {
+        this.id_user = 0;
+        this.username = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.password = "";
+        this.age = 0;
+    }
+
+    public static User createEmptyUser() {
+        return new User();
+    }
+
     public String getUsername() {
         return username;
     }

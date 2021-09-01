@@ -2,7 +2,7 @@
 <%@ page import="local.user.RegisterRequester" %>
  <%
    RegisterRequester requester = (request.getAttribute("registerRequester") != null) ? (RegisterRequester) request.getAttribute("registerRequester") :
-          new RegisterRequester("", "", "", "", "");
+          RegisterRequester.createEmptyRegisterRequester();
    String message = (request.getAttribute("submitStatus") == null) ?
           "" : (String) request.getAttribute("submitStatus");
  %>
