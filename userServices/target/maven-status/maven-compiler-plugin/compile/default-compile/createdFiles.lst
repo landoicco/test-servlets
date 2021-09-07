@@ -1,0 +1,7 @@
+user\pojos\LoginRequester.class
+user\database\Validator.class
+user\pojos\RegisterRequester.class
+user\database\ConnectionHandler.class
+user\pojos\User.class
+user\database\UserDAO.class
+user\database\UserJDBC.class
