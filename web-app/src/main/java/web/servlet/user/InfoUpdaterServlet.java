@@ -7,14 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import user.pojos.*;
-import user.database.*;
-import user.validation.Validator;
+import user.utilities.UserRegistrationHandler;
 
 import java.io.IOException;
 
 public class InfoUpdaterServlet extends HttpServlet {
 
-    UserDAO dbGate;
     String errorMessage;
 
     @Override
@@ -34,25 +32,16 @@ public class InfoUpdaterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User oldUser = (User) session.getAttribute("user");
 
-        boolean usernameWasUpdated = !oldUser.getUsername().equals(updatedData.getUsername());
-        boolean validUpdate = false;
+        User updatedUser = null;
         try {
-            validUpdate = Validator.isValidNewUser(updatedData, usernameWasUpdated);
+            updatedUser = UserRegistrationHandler.getUpdatedUser(oldUser, updatedData);
         } catch (IllegalArgumentException ex) {
             errorMessage = ex.getMessage();
         }
 
-        if (validUpdate) {
-            if (dbGate == null) {
-                dbGate = new UserJDBC();
-            }
+        if (updatedUser != null) {
 
-            User updatedUser = getUpdatedUser(oldUser, updatedData);
-
-            //Actualizar usuario en DB
-            dbGate.update(updatedUser);
-
-            //Actualiar usuario en HttpSession
+            //Actualizar usuario en HttpSession
             session.setAttribute("user", updatedUser);
 
             //Redireccionar a jokes ya con usuario actualizado en HttpSession
@@ -64,13 +53,6 @@ public class InfoUpdaterServlet extends HttpServlet {
         request.setAttribute("submitStatus", errorMessage);
         RequestDispatcher rq = request.getRequestDispatcher("/secret/update");
         rq.forward(request, response);
-
-    }
-
-    private User getUpdatedUser(User oldUser, RegisterRequester updatedData) {
-
-        return new User(oldUser.getId_user(), updatedData.getUsername(), updatedData.getFirstName(), updatedData.getLastName(),
-                updatedData.getPassword(), Integer.parseInt(updatedData.getAge()));
 
     }
 }

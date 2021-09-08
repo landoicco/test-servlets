@@ -26,6 +26,26 @@ public class UserRegistrationHandler {
         return null;
     }
 
+    public static User getUpdatedUser(User oldUser, RegisterRequester updatedInfo) {
+
+        boolean usernameWasUpdated = !oldUser.getUsername().equals(updatedInfo.getUsername());
+        boolean isValidUpdate = Validator.isValidNewUser(updatedInfo, usernameWasUpdated);
+
+        if (isValidUpdate) {
+            User updatedUser = new User(oldUser.getId_user(), updatedInfo.getUsername(), updatedInfo.getFirstName(),
+                    updatedInfo.getLastName(), updatedInfo.getPassword(), Integer.parseInt(updatedInfo.getAge()));
+
+            dbGate.update(updatedUser);
+
+            return updatedUser;
+        }
+        return null;
+    }
+
+    public static void deleteUserRegister(User user) {
+        dbGate.delete(user);
+    }
+
     private static User convertInUser(RegisterRequester requester) {
         return new User(requester.getUsername(), requester.getFirstName(), requester.getLastName(),
                 requester.getPassword(), Integer.parseInt(requester.getAge()));
