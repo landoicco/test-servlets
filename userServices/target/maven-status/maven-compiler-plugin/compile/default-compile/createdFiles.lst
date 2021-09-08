@@ -1,5 +1,6 @@
 user\pojos\LoginRequester.class
 user\validation\Validator.class
+user\utilities\UserLoginHandler.class
 user\pojos\RegisterRequester.class
 user\utilities\UserRegistrationHandler.class
 user\database\ConnectionHandler.class

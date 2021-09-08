@@ -33,7 +33,7 @@ public class Validator {
 
     }
 
-    public static boolean existsUser(LoginRequester requester) {
+    public static User existsUser(LoginRequester requester) {
 
         if ("".equals(requester.getUsername()) || "".equals(requester.getPassword())) {
             throw new IllegalArgumentException("Both fields are required");
@@ -42,7 +42,7 @@ public class Validator {
         for (User u : dbGate.select()) {
             if (u.getUsername().equals(requester.getUsername()) &&
                     u.getPassword().equals(requester.getPassword())) {
-                return true;
+                return u;
             } else if (u.getUsername().equals(requester.getUsername()) &&
                     !u.getPassword().equals(requester.getPassword())) {
                 throw new IllegalArgumentException("Wrong password");
