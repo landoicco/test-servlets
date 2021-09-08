@@ -7,13 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import user.pojos.*;
-import user.database.*;
+import user.utilities.UserRegistrationHandler;
 
 import java.io.IOException;
 
 public class RegisterServlet extends HttpServlet {
 
-    UserDAO dbGate;
     String errorMessage;
 
     @Override
@@ -29,28 +28,14 @@ public class RegisterServlet extends HttpServlet {
 
         RegisterRequester registerRequester = new RegisterRequester(username, firstName, lastName, password, ageString);
 
-        boolean isAValidUser = false;
+        User user = null;
         try {
-            isAValidUser = Validator.isValidNewUser(registerRequester);
+            user = UserRegistrationHandler.getRegisteredUser(registerRequester);
         } catch (IllegalArgumentException ex) {
             errorMessage = ex.getMessage();
         }
 
-        if (isAValidUser) {
-
-            //Abrir acceso a DB
-            if (dbGate == null) {
-                dbGate = new UserJDBC();
-            }
-
-            //Crear objeto User
-            User newUser = new User(username, firstName, lastName, password,
-                    Integer.parseInt(ageString));
-            // INSERT a DB
-            dbGate.insert(newUser);
-
-            //Get newUser from DB with id_user
-            User user = (getUser(newUser) != null) ? getUser(newUser) : newUser;
+        if (user != null) {
 
             //Crear HttpSession
             HttpSession session = request.getSession();
@@ -66,17 +51,5 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("registerRequester", registerRequester);
         RequestDispatcher rq = request.getRequestDispatcher("/register");
         rq.forward(request, response);
-    }
-
-    private User getUser(User user) {
-
-        // Comprobar que existe el usuario solicitado
-        for (User u : dbGate.select()) {
-            if (u.getUsername().equals(user.getUsername()) &&
-                    u.getPassword().equals(user.getPassword())) {
-                return u;
-            }
-        }
-        return null;
     }
 }

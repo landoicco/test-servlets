@@ -1,5 +1,7 @@
-package user.database;
+package user.validation;
 
+import user.database.UserDAO;
+import user.database.UserJDBC;
 import user.pojos.*;
 
 public class Validator {

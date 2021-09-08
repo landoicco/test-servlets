@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import user.pojos.*;
 import user.database.*;
+import user.validation.Validator;
 
 import java.io.IOException;
 
