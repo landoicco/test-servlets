@@ -32,8 +32,7 @@ public class UserRegistrationHandler {
         boolean isValidUpdate = Validator.isValidNewUser(updatedInfo, usernameWasUpdated);
 
         if (isValidUpdate) {
-            User updatedUser = new User(oldUser.getId_user(), updatedInfo.getUsername(), updatedInfo.getFirstName(),
-                    updatedInfo.getLastName(), updatedInfo.getPassword(), Integer.parseInt(updatedInfo.getAge()));
+            User updatedUser = convertInUser(updatedInfo, oldUser.getId_user());
 
             dbGate.update(updatedUser);
 
@@ -48,6 +47,11 @@ public class UserRegistrationHandler {
 
     private static User convertInUser(RegisterRequester requester) {
         return new User(requester.getUsername(), requester.getFirstName(), requester.getLastName(),
+                requester.getPassword(), Integer.parseInt(requester.getAge()));
+    }
+
+    private static User convertInUser(RegisterRequester requester, int idUser) {
+        return new User(idUser, requester.getUsername(), requester.getFirstName(), requester.getLastName(),
                 requester.getPassword(), Integer.parseInt(requester.getAge()));
     }
 

@@ -1,7 +1,5 @@
 package user.utilities;
 
-import user.database.UserDAO;
-import user.database.UserJDBC;
 import user.pojos.LoginRequester;
 import user.pojos.User;
 import user.validation.Validator;
