@@ -2,4 +2,6 @@ target/*
 .idea/*
 my-servlet.iml
 userServices/target/*
+web-app/target/*
 userServices/userServices.iml
+web-app/web-app.iml
